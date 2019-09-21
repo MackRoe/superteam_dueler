@@ -2,14 +2,16 @@ import random
 
 """ code under construction """
 
+
 class Ability:
     def __init__(self, name, attack_strength):
         # instance variables
-        self.name: name
-        self.max_damage: max_damage
+        self.name = name
+        self.max_damage = attack_strength
+
     def attack(self):
         print(self.name + " attacks!")
-        attack_now = random.randint(0, max_damage)
+        attack_now = random.randint(0, self.max_damage)
         return attack_now
 
 
