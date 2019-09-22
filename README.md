@@ -1,6 +1,5 @@
 Project Under Construction
 
-Traceback (most recent call last):
-  File "superheroes.py", line 23, in <module>
-    print(ability.name)
-AttributeError: 'Ability' object has no attribute 'name'
+Super Heros duel to determine if they are strong enough to save the world. Their special abilities and armor are put to the test in this challenge. 
+
+Coming soon. Stay tuned!

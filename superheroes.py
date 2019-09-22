@@ -31,16 +31,21 @@ class Hero:
     def __init__(self, name, starting_health=100):
         # Initialize instance variables values as instance variables
         damage = 0
-        # set starting value for damage
-        self.abilities = []
-        self.armors = []
+        abilities = []
+        armors = []
+        # set starting values
+        self.abilities = abilities
+        self.armors = armors
         # abilities and armors are lists that will contain objects
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health - damage
-        
-        pass
 
+
+    def add_ability(self, ability):
+        self.abilities.append(ability)
+        """ Add ability to abilities list """
+        # return abilities
 
 if __name__ == "__main__":
     # If you run this file from the terminal
@@ -49,6 +54,9 @@ if __name__ == "__main__":
     ability = Ability("Debugging Ability", 20)
     print(ability.name)
     print(ability.attack())
-    my_hero = Hero("Auntie M", 200)
-    print(my_hero.name)
-    print(my_hero.current_health)
+    ability = Ability("Smite", 25)
+    hero = Hero("Auntie M", 200)
+    print(hero.name)
+    print(hero.current_health)
+    hero.add_ability(ability)
+    print(hero.abilities)
