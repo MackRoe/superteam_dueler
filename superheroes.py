@@ -47,16 +47,24 @@ class Hero:
         """ Add ability to abilities list """
         # return abilities
 
+    
+    def attack(self, name, attack_strength):
+        for each in range(abilities):
+            total_damage = damage + Ability.attack()
+            return total_damage
+
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
     """ test code from tutorial """
     ability = Ability("Debugging Ability", 20)
-    print(ability.name)
-    print(ability.attack())
+    print("Ability Name: " + ability.name)
+    print("Ability Strength: " + str(ability.attack()))
     ability = Ability("Smite", 25)
     hero = Hero("Auntie M", 200)
-    print(hero.name)
-    print(hero.current_health)
-    hero.add_ability(ability)
+    print("Hero Name: " + hero.name)
+    print("Current Health: " + str(hero.current_health))
+    hero.add_ability("Force Wave")
+    hero.add_ability("Lightning")
+    print("All Abilities: ")
     print(hero.abilities)
