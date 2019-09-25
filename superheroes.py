@@ -1,11 +1,15 @@
 import random
 
-""" code under construction """
+""" code under construction 
+    This program is assigned practice within
+    school curriculum """
 
 
 class Ability:
     def __init__(self, name, attack_strength):
-        # instance variables
+        """ instance variables
+            name: str
+            max_damage: int """
         self.name = name
         self.max_damage = attack_strength
 
@@ -18,28 +22,33 @@ class Ability:
 
 class Armor:
     def __init__(self, name, max_block):
+        """ Instance Variables
+            name: str
+            max_block: int
+        """
         self.name = name
-        self.max_block = max.block
+        self.max_block = max_block
 
     def block(self):
-        block_now = random.randint(0, max_block)
-        # creates a randomly rated blocking action
-        return block_now 
-
+        block = random.randint(0, self.max_block)
+        return block
+        # creates a randomly rated blocking action    
+        
 
 class Hero:
     def __init__(self, name, starting_health=100):
         # Initialize instance variables values as instance variables
         damage = 0
-        abilities = []
-        armors = []
+        # abilities = []
+        # armors = []
         # set starting values
-        self.abilities = abilities
-        self.armors = armors
+        self.abilities = []
+        self.armors = []
         # abilities and armors are lists that will contain objects
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health - damage
+        # -? possible error source: subtraction within instantiation ?-
 
 
     def add_ability(self, ability):
@@ -47,24 +56,58 @@ class Hero:
         """ Add ability to abilities list """
         # return abilities
 
-    
-    def attack(self, name, attack_strength):
+    def attack(self):
+        # , name, attack_strength
         for each in range(abilities):
             total_damage = damage + Ability.attack()
             return total_damage
+
+    def add_armor(self, armor):
+        """ adds armor items to armors list """
+        self.armors.append(armor)
+
+    def defend(self, damage):
+        """ Calculates total defense from armor """
+        if len(self.armors) > 0:
+            block = 0
+            for each in self.armors:
+                block = block + each.block()
+                return block
+        else:
+            return 0
+    
+    def take_damage(self, damage):
+        """ Updates self.current_health to reflect the
+        damage minus the defense. """
+        damage = damage - self.defend(damage)
+        return damage
+
+    def is_alive(self):
+        """ Return True or False depending on whether the 
+        hero has been knocked out or not """
+        if hero.current_health <= 0:
+            return False
+        else:
+            return True
 
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
     """ test code from tutorial """
-    ability = Ability("Debugging Ability", 20)
-    print("Ability Name: " + ability.name)
-    print("Ability Strength: " + str(ability.attack()))
-    ability = Ability("Smite", 25)
+    # ability = Ability("Debugging Ability", 20)
+    # print("Ability Name: " + ability.name)
+    # print("Ability Strength: " + str(ability.attack()))
+    # ability = Ability("Smite", 25)
     hero = Hero("Auntie M", 200)
+    # whip = Armor("Whip", 30)
+    # hero.add_armor(whip)
+    hero.take_damage(150)
     print("Hero Name: " + hero.name)
-    print("Current Health: " + str(hero.current_health))
-    hero.add_ability("Force Wave")
-    hero.add_ability("Lightning")
-    print("All Abilities: ")
-    print(hero.abilities)
+    print("Current Health: ", str(hero.current_health))
+    print("Alive?: ", hero.is_alive())
+    # hero.add_ability("Force Wave")
+    # hero.add_ability("Lightning")
+    # print("All Abilities: ")
+    # print(hero.abilities)
+    hero.take_damage(15000)
+    print(hero.is_alive())
