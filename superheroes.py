@@ -83,13 +83,16 @@ class Hero:
         self.current_health = self.starting_health - damage
 
     def is_alive(self):
-        """ Return True or False depending on whether the 
+        """ Return True or False depending on whether the
         hero has been knocked out or not """
         
         if hero.current_health <= 0:
             return False
         else:
             return True
+
+    def fight(self, opponent):
+        pass
 
 if __name__ == "__main__":
     # If you run this file from the terminal
