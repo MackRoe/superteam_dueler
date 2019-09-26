@@ -38,7 +38,7 @@ class Armor:
 class Hero:
     def __init__(self, name, starting_health=100):
         # Initialize instance variables values as instance variables
-        damage = 0
+        self.damage = 0
         # abilities = []
         # armors = []
         # set starting values
@@ -47,9 +47,8 @@ class Hero:
         # abilities and armors are lists that will contain objects
         self.name = name
         self.starting_health = starting_health
-        self.current_health = starting_health - damage
-        # -? possible error source: subtraction within instantiation ?-
-
+        self.current_health = starting_health
+       
 
     def add_ability(self, ability):
         self.abilities.append(ability)
@@ -79,12 +78,14 @@ class Hero:
     def take_damage(self, damage):
         """ Updates self.current_health to reflect the
         damage minus the defense. """
-        damage = damage - self.defend(damage)
-        return damage
+        defense = hero.defend(damage)
+        damage -= defense
+        self.current_health = self.starting_health - damage
 
     def is_alive(self):
         """ Return True or False depending on whether the 
         hero has been knocked out or not """
+        
         if hero.current_health <= 0:
             return False
         else:
@@ -109,5 +110,11 @@ if __name__ == "__main__":
     # hero.add_ability("Lightning")
     # print("All Abilities: ")
     # print(hero.abilities)
-    hero.take_damage(15000)
+    # hero.take_damage(15000)
+    # debug to discover why damage is not being received
+    # print("Damage: ")
+    print(hero.take_damage(1500)) #
+    print("Current Health: ") #
+    print(hero.current_health) #
     print(hero.is_alive())
+
