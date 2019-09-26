@@ -20,6 +20,13 @@ class Ability:
         return attack_now
 
 
+class Weapon(Ability):
+    def attack(self):
+        """  This method returns a random value
+        between one half to the full attack power of the weapon.
+        """
+        pass
+
 class Armor:
     def __init__(self, name, max_block):
         """ Instance Variables
@@ -38,10 +45,8 @@ class Armor:
 class Hero:
     def __init__(self, name, starting_health=100):
         # Initialize instance variables values as instance variables
+        # and set starting values
         self.damage = 0
-        # abilities = []
-        # armors = []
-        # set starting values
         self.abilities = []
         self.armors = []
         # abilities and armors are lists that will contain objects
@@ -56,10 +61,11 @@ class Hero:
         # return abilities
 
     def attack(self):
-        # , name, attack_strength
-        for each in range(abilities):
-            total_damage = damage + Ability.attack()
-            return total_damage
+        """ Calculate the total damage from all ability attacks."""
+        for each in self.abilities:
+            # range only works with numbers
+            self.damage = self.damage + each.attack()
+        return self.damage
 
     def add_armor(self, armor):
         """ adds armor items to armors list """
@@ -68,17 +74,17 @@ class Hero:
     def defend(self, damage):
         """ Calculates total defense from armor """
         if len(self.armors) > 0:
-            block = 0
+           
             for each in self.armors:
-                block = block + each.block()
-                return block
+                damage = damage - each.block(self)
+            return damage
         else:
             return 0
     
     def take_damage(self, damage):
         """ Updates self.current_health to reflect the
         damage minus the defense. """
-        defense = hero.defend(damage)
+        defense = self.defend(damage)
         damage -= defense
         self.current_health = self.starting_health - damage
 
@@ -86,38 +92,73 @@ class Hero:
         """ Return True or False depending on whether the
         hero has been knocked out or not """
         
-        if hero.current_health <= 0:
+        if self.current_health <= 0:
             return False
         else:
             return True
 
     def fight(self, opponent):
+        """ current hero fights each opponent until a champion is determined """
+        
+        while self.is_alive() and opponent.is_alive():
+            if self.abilities == opponent.abilities:
+                # declare a draw if combatant abilities are equivalent
+                print("Hero abilities are equivalent. No victor possible.")
+                print("Match declared a Draw")
+            
+            # attack opponent
+            damage = self.attack()
+            # accumulate opponent's damage
+            opponent.take_damage(damage)
+            # be attacked by opponent
+            damage = opponent.attack()
+            # be attacked by opponent
+            self.take_damage(damage)
+            
+        if self.current_health > 0:
+            print(self.name + " is victorious!")
+        else:
+            print(opponent.name + " is victorious!")
+            
+
+        
+        
+        # accumulate self damage
+        
         pass
 
 if __name__ == "__main__":
     # If you run this file from the terminal
     # this block is executed.
     """ test code from tutorial """
-    # ability = Ability("Debugging Ability", 20)
+    # 
     # print("Ability Name: " + ability.name)
     # print("Ability Strength: " + str(ability.attack()))
     # ability = Ability("Smite", 25)
-    hero = Hero("Auntie M", 200)
+    hero1 = Hero("Auntie M", 200)
+    hero2 = Hero("The Coder")
+    ability1 = Ability("Molecular Phasing", 100)
+    ability2 = Ability("Hair Flip", 1)
+    ability3 = Ability("Debugging Ability", 20)
+    ability4 = Ability("Infinite Loop", 10)
     # whip = Armor("Whip", 30)
     # hero.add_armor(whip)
-    hero.take_damage(150)
-    print("Hero Name: " + hero.name)
-    print("Current Health: ", str(hero.current_health))
-    print("Alive?: ", hero.is_alive())
-    # hero.add_ability("Force Wave")
-    # hero.add_ability("Lightning")
+    # hero.take_damage(150)
+    # print("Hero Name: " + hero.name)
+    # print("Current Health: ", str(hero.current_health))
+    # print("Alive?: ", hero.is_alive())
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
     # print("All Abilities: ")
     # print(hero.abilities)
     # hero.take_damage(15000)
     # debug to discover why damage is not being received
     # print("Damage: ")
-    print(hero.take_damage(1500)) #
-    print("Current Health: ") #
-    print(hero.current_health) #
-    print(hero.is_alive())
+    # print(hero.take_damage(1500)) #
+    # print("Current Health: ") #
+    # print(hero.current_health) #
+    # print(hero.is_alive())
+    hero1.fight(hero2)
 
