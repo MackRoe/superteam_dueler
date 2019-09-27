@@ -127,7 +127,14 @@ class Hero:
         
         # accumulate self damage
         
+        # pass
+
+
+class Team:
+    def __init__(self, name):
+        """ Initialize your team with its team name """
         pass
+
 
 if __name__ == "__main__":
     # If you run this file from the terminal
@@ -156,7 +163,6 @@ if __name__ == "__main__":
     # print("All Abilities: ")
     # print(hero.abilities)
     # hero.take_damage(15000)
-    # debug to discover why damage is not being received
     # print("Damage: ")
     # print(hero.take_damage(1500)) #
     # print("Current Health: ") #
