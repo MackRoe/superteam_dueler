@@ -133,7 +133,19 @@ class Hero:
 class Team:
     def __init__(self, name):
         """ Initialize your team with its team name """
+        self.name = name
         pass
+
+    def add_hero(self, hero):
+        pass
+    
+    def remove_hero(self, name):
+        pass
+
+    def view_all_heros(self):
+        pass
+
+
 
 
 if __name__ == "__main__":
