@@ -26,7 +26,7 @@ class Weapon(Ability):
         between one half to the full attack power of the weapon.
         """
         half_damage = max_damage//2
-        attack_now = random.randint(0, self.max_damage)
+        attack_now = random.randint(half_damage, self.max_damage)
         return attack_now
 
 class Armor:
