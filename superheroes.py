@@ -25,7 +25,9 @@ class Weapon(Ability):
         """  This method returns a random value
         between one half to the full attack power of the weapon.
         """
-        pass
+        half_damage = max_damage//2
+        attack_now = random.randint(0, self.max_damage)
+        return attack_now
 
 class Armor:
     def __init__(self, name, max_block):
@@ -138,7 +140,7 @@ if __name__ == "__main__":
     hero1 = Hero("Auntie M", 200)
     hero2 = Hero("The Coder")
     ability1 = Ability("Molecular Phasing", 100)
-    ability2 = Ability("Hair Flip", 1)
+    ability2 = Ability("Hair Flip", 5)
     ability3 = Ability("Debugging Ability", 20)
     ability4 = Ability("Infinite Loop", 10)
     # whip = Armor("Whip", 30)
