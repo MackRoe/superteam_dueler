@@ -134,15 +134,26 @@ class Team:
     def __init__(self, name):
         """ Initialize your team with its team name """
         self.name = name
-        pass
+        self.heros = []
 
     def add_hero(self, hero):
-        pass
+        self.heros.append(hero)
     
     def remove_hero(self, name):
-        pass
+        '''Remove hero from heroes list.
+        If Hero isn't found return 0.
+        '''
+        #check that list is not empty
+        if not len(self.heros) == 0
+            index = self.heros.index(self.name)
+            self.heros.pop(index)
+        # finds index of hero name in list of heros
+        # reference programiz.com
+
 
     def view_all_heros(self):
+        for hero in self.heros:
+            print(self.name)
         pass
 
 
