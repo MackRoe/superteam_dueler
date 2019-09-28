@@ -162,6 +162,14 @@ class Team:
     def view_all_heros(self):
         for hero in self.heros:
             print(self.name)
+    
+    def attack(self, other_team):
+        pass
+
+    def revive_heros(self, health=100):
+        pass
+
+    def stats(self):
         pass
 
 
