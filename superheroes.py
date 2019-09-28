@@ -55,6 +55,8 @@ class Hero:
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
+        self.deaths = deaths
+        self.kills = kills
        
 
     def add_ability(self, ability):
@@ -121,13 +123,9 @@ class Hero:
             print(self.name + " is victorious!")
         else:
             print(opponent.name + " is victorious!")
-            
 
-        
-        
-        # accumulate self damage
-        
-        # pass
+    def add_kill(self):
+        pass
 
 
 class Team:
@@ -144,12 +142,11 @@ class Team:
         If Hero isn't found return 0.
         '''
         #check that list is not empty
-        if not len(self.heros) == 0
+        if not len(self.heros) == 0:
             index = self.heros.index(self.name)
             self.heros.pop(index)
         # finds index of hero name in list of heros
         # reference programiz.com
-
 
     def view_all_heros(self):
         for hero in self.heros:
