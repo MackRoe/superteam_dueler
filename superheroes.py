@@ -143,30 +143,30 @@ class Team:
     def __init__(self, name):
         """ Initialize your team with its team name """
         self.name = name
-        self.heros = []
+        self.heroes = []
 
     def add_hero(self, hero):
-        self.heros.append(hero)
+        self.heroes.append(hero)
     
     def remove_hero(self, name):
         '''Remove hero from heroes list.
         If Hero isn't found return 0.
         '''
         #check that list is not empty
-        if not len(self.heros) == 0:
-            index = self.heros.index(self.name)
-            self.heros.pop(index)
-        # finds index of hero name in list of heros
+        if not len(self.heroes) == 0:
+            index = self.heroes.index(self.name)
+            self.heroes.pop(index)
+        # finds index of hero name in list of heroes
         # reference programiz.com
 
-    def view_all_heros(self):
-        for hero in self.heros:
+    def view_all_heroes(self):
+        for hero in self.heroes:
             print(self.name)
     
     def attack(self, other_team):
         pass
 
-    def revive_heros(self, health=100):
+    def revive_heroes(self, health=100):
         pass
 
     def stats(self):
