@@ -129,7 +129,14 @@ class Hero:
             add_kill(opponent)
 
     def add_kill(self):
+        """ update number of kills """
+        # tutorial says to also use a num_kills (?) parameter
         self.kills += 1
+
+    def add_death(self):
+        """ update number of deaths """
+        # tutorial says to also use a num_deaths (?) parameter
+        self.deaths += 1
 
 
 class Team:
