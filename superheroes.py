@@ -168,7 +168,7 @@ class Team:
         living_heroes = []
         for hero in self.heros:
             if Hero.is_alive(hero):
-                append.living_heroes(hero)
+                living_heroes.append(hero)
                 return living_heroes
                 
     
