@@ -53,7 +53,8 @@ class Hero:
         self.kills = 0
         self.abilities = []
         self.armors = []
-        # abilities and armors are lists that will contain objects
+        # abilities and armors are lists that
+        # will contain objects
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
@@ -75,6 +76,9 @@ class Hero:
     def add_armor(self, armor):
         """ adds armor items to armors list """
         self.armors.append(armor)
+
+    def add_weapon(self, weapon):
+        self.abilities.append(weapon)
 
     def defend(self):
         """ Calculates total defense from armor """
@@ -183,8 +187,9 @@ class Team:
         return self.other_team
 
     def get_random_hero(self, heroes):
+        """ gets random hero from list of heroes """
         return random.choice(heroes)
- 
+
     def attack(self, other_team): 
         """ battle teams against each other """
         # select random hero
@@ -206,7 +211,18 @@ class Team:
             print("{}: Kills: {}, Deaths {}".format(self.name, self.kills, self.deaths))
 
 
+class Arena:
+    def __init__(self):
+        self.arena_team1 = []
+        self.arena_team2 = []
 
+    def create_ability(self):
+        """ prompt user for ability info
+        & return ability values """
+        Ability.name = input("What is the name of your ability? ")
+        print("What is the maximum amount of damage this ability")
+        Ability.max_damage = input("is capable of inflicting? ")
+        return Ability.name and Ability.max_damage
 
 
 if __name__ == "__main__":
