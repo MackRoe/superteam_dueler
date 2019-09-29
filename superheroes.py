@@ -171,24 +171,27 @@ class Team:
                 living_heroes.append(hero)
                 return living_heroes
 
-    def make_other_team(self, name):
+    def make_other_team(self, heroes):
         """ sorts every other hero into other team """
         self.other_team = []
         # sort into teams
-        for hero in self.heroes:
-            if self.heroes(index) % 2:
+        for hero in heroes:
+            index = heroes.index(hero)
+            if heroes(index) % 2:
                 self.other_team.append(hero)
-        return other_team
+                self.heroes.pop(hero)
+        return self.other_team
 
     def get_random_hero(self, heroes):
         return random.choice(heroes)
  
-    def attack(self, other_team):
+    def attack(self, other_team): 
         """ battle teams against each other """
-        while hero_team1.is_alive() and hero_team2.isalive():
-            # select random hero
-            hero_team1 = get_random_hero(self.heroes)
-            hero_team2 = get_random_hero(other_team.heroes)
+        # select random hero
+        hero_team1 = get_random_hero(self.heroes)
+        hero_team2 = get_random_hero(other_team.heroes)
+        # check that selected hero is alive
+        while hero_team1.is_alive() and hero_team2.is_alive():
             hero_team1.fight(hero_team2)
 
     def revive_heroes(self, health=100):
