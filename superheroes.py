@@ -233,6 +233,11 @@ class Arena:
         Weapon.max_damage = input("is capable of inflicting? ")
         return Weapon.name and Weapon.max_damage
 
+    def create_armor(self):
+        Armor.name = input("What armor does your hero use? ")
+        Armor.max_block = input("How much damage can it deflect? ")
+        return Armor.name and Armor.max_block
+
 
 if __name__ == "__main__":
     # If you run this file from the terminal
