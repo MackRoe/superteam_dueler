@@ -76,20 +76,20 @@ class Hero:
         """ adds armor items to armors list """
         self.armors.append(armor)
 
-    def defend(self, damage):
+    def defend(self):
         """ Calculates total defense from armor """
+        defense = 0
         if len(self.armors) > 0:
-           
-            for each in self.armors:
-                damage = damage - each.block(self)
-            return damage
+            for each_armor in self.armors:
+                defense += each_armor.block()
+            return defense
         else:
             return 0
     
     def take_damage(self, damage):
         """ Updates self.current_health to reflect the
         damage minus the defense. """
-        defense = self.defend(damage)
+        defense = self.defend()
         damage -= defense
         self.current_health = self.starting_health - damage
 
@@ -122,12 +122,12 @@ class Hero:
             
         if self.current_health > 0:
             print(self.name + " is victorious!")
-            add_kill(self)
-            add_death(opponent)
+            self.add_kill()
+            opponent.add_death()
         else:
             print(opponent.name + " is victorious!")
-            add_death(self)
-            add_kill(opponent)
+            self.add_death()
+            opponent.add_kill()
 
     def add_kill(self):
         """ update number of kills """
@@ -166,19 +166,41 @@ class Team:
 
     def get_living_heroes(self):
         living_heroes = []
-        for hero in self.heros:
+        for hero in self.heroes:
             if Hero.is_alive(hero):
                 living_heroes.append(hero)
                 return living_heroes
-                
-    
+
+    def make_other_team(self, name):
+        """ sorts every other hero into other team """
+        self.other_team = []
+        # sort into teams
+        for hero in self.heroes:
+            if self.heroes(index) % 2:
+                self.other_team.append(hero)
+        return other_team
+
+    def get_random_hero(self, heroes):
+        return random.choice(heroes)
+ 
     def attack(self, other_team):
-        pass
+        """ battle teams against each other """
+        while hero_team1.is_alive() and hero_team2.isalive():
+            # select random hero
+            hero_team1 = get_random_hero(self.heroes)
+            hero_team2 = get_random_hero(other_team.heroes)
+            hero_team1.fight(hero_team2)
 
     def revive_heroes(self, health=100):
-        pass
+        """ reset the health of all heroes back to starting health """
+        for hero in self.heroes:
+            self.health = health
+            hero.current_health = hero.starting_health
 
     def stats(self):
+        """ print team stats """
+        for hero in self.heroes:
+            print("{}: Health: {}".format(self.name, self.current_health))
         pass
 
 
