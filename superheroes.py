@@ -224,6 +224,15 @@ class Arena:
         Ability.max_damage = input("is capable of inflicting? ")
         return Ability.name and Ability.max_damage
 
+    def create_weapon(self):
+        '''Prompt user for Weapon information
+            return Weapon with values from user input.
+        '''
+        Weapon.name = input("What is the name of your hero's weapon? ")
+        print("What is the maximum damage that your hero's weapon")
+        Weapon.max_damage = input("is capable of inflicting? ")
+        return Weapon.name and Weapon.max_damage
+
 
 if __name__ == "__main__":
     # If you run this file from the terminal
