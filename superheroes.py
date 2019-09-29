@@ -25,7 +25,7 @@ class Weapon(Ability):
         """  This method returns a random value
         between one half to the full attack power of the weapon.
         """
-        half_damage = max_damage//2
+        half_damage = self.max_damage//2
         attack_now = random.randint(half_damage, self.max_damage)
         return attack_now
 
@@ -49,14 +49,15 @@ class Hero:
         # Initialize instance variables values as instance variables
         # and set starting values
         self.damage = 0
+        self.deaths = 0
+        self.kills = 0
         self.abilities = []
         self.armors = []
         # abilities and armors are lists that will contain objects
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
-        self.deaths = deaths
-        self.kills = kills
+
        
 
     def add_ability(self, ability):
@@ -162,6 +163,14 @@ class Team:
     def view_all_heroes(self):
         for hero in self.heroes:
             print(self.name)
+
+    def get_living_heroes(self):
+        living_heroes = []
+        for hero in self.heros:
+            if Hero.is_alive(hero):
+                append.living_heroes(hero)
+                return living_heroes
+                
     
     def attack(self, other_team):
         pass
