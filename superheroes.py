@@ -200,8 +200,8 @@ class Team:
     def stats(self):
         """ print team stats """
         for hero in self.heroes:
-            print("{}: Health: {}".format(self.name, self.current_health))
-        pass
+            print("{}: Kills: {}, Deaths {}".format(self.name, self.kills, self.deaths))
+
 
 
 
