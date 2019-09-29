@@ -78,6 +78,7 @@ class Hero:
         self.armors.append(armor)
 
     def add_weapon(self, weapon):
+        """ adds weapon abilities to abilities list """
         self.abilities.append(weapon)
 
     def defend(self):
@@ -212,31 +213,80 @@ class Team:
 
 
 class Arena:
-    def __init__(self):
+    def __init__(Hero):
         self.arena_team1 = []
         self.arena_team2 = []
+        self.weapons = []
 
     def create_ability(self):
         """ prompt user for ability info
         & return ability values """
-        Ability.name = input("What is the name of your ability? ")
+        added_ability = input("What is the name of your hero's ability? ")
         print("What is the maximum amount of damage this ability")
-        Ability.max_damage = input("is capable of inflicting? ")
-        return Ability.name and Ability.max_damage
+        added_ability_max_damage = input("is capable of inflicting? ")
+        return Ability(added_ability, added_ability_max_damage)
 
     def create_weapon(self):
         '''Prompt user for Weapon information
             return Weapon with values from user input.
         '''
-        Weapon.name = input("What is the name of your hero's weapon? ")
-        print("What is the maximum damage that your hero's weapon")
-        Weapon.max_damage = input("is capable of inflicting? ")
-        return Weapon.name and Weapon.max_damage
+        added_weapon = input("What is your hero\'s weapon? ")
+        print("What is the maximum damage that your hero\'s weapon")
+        added_weapon_max_damage = input("is capable of inflicting? ")
+        return ability(added_weapon, added_weapon_max_damage)
 
     def create_armor(self):
-        Armor.name = input("What armor does your hero use? ")
-        Armor.max_block = input("How much damage can it deflect? ")
-        return Armor.name and Armor.max_block
+        added_armor = input("What armor does your hero use? ")
+        added_armor_max_defense = input("How much damage can it deflect? ")
+        return armor(added_armor, added_armor_max_defense)
+
+    def create_hero(self, name, abilities, armors, weapons):
+        '''Prompt user for Hero information
+          return Hero with values from user input.
+        '''
+        
+        # get hero's name
+        if len(heroes) < 2 and len(heroes) % 2 == 0:
+            name = input("What is your hero's name? ")
+            add_hero(name)
+            while not name == "":
+                run_create_ability = input("Does your hero have a special ability? [Y or N] ")
+                
+                while not run_create_ability == "":
+                    if upper.run_create_ability == "Y":
+                        create_ability()
+                    elif not upper.run_create_ability == "N":
+                        print("Ok")
+                    else:
+                        name = ""
+
+                run_create_armor = input("Does your hero have armor? [Y or N]")
+                while not run_create_armor == "":
+                    if upper.run_create_armor == "Y":
+                        create_armor()
+                    elif not upper.run_create_armor == "N":
+                        print("Ok")
+                    else:
+                        name = ""
+
+                run_create_weapon = input("Does your hero have armor? [Y or N]")
+                while not run_create_weapon == "":
+                    if upper.run_create_weapon == "Y":
+                        create_weapon()
+                    elif not upper.run_create_weapon == "N":
+                        print("Ok")
+                    else:
+                        name = ""
+        else:
+            print("Minimum Two Heroes Required :: Fatal Error - Program Quit")
+        # create a hero object that contains abilities, armors, and weapons
+        return hero(name, ability, armor, weapon)
+
+
+        
+
+        # examine list item names for correct correlation 
+        pass
 
 
 if __name__ == "__main__":
