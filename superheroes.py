@@ -187,15 +187,15 @@ class Team:
                 self.heroes.pop(hero)
         return self.other_team
 
-    def get_random_hero(self, heroes):
+    def random_hero(self, heroes):
         """ gets random hero from list of heroes """
         return random.choice(heroes)
 
     def attack(self, other_team): 
         """ battle teams against each other """
         # select random hero
-        hero_team1 = get_random_hero(self.heroes)
-        hero_team2 = get_random_hero(other_team.heroes)
+        hero_team1 = Team.random_hero(self.heroes)
+        hero_team2 = Team.random_hero(self.other_team.heroes)
         # check that selected hero is alive
         while hero_team1.is_alive() and hero_team2.is_alive():
             hero_team1.fight(hero_team2)
@@ -246,7 +246,7 @@ class Arena:
         '''
         
         # get hero's name
-        if len(heroes) < 2 and len(heroes) % 2 == 0:
+        if len(heroes) < 2:
             name = input("What is your hero's name? ")
             add_hero(name)
             while not name == "":
@@ -282,11 +282,13 @@ class Arena:
         # create a hero object that contains abilities, armors, and weapons
         return hero(name, ability, armor, weapon)
 
-
-        
-
         # examine list item names for correct correlation 
-        pass
+    
+def build_team_one():
+    pass
+
+def build_team_two():
+    pass
 
 
 if __name__ == "__main__":
