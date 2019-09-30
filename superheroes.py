@@ -285,10 +285,28 @@ class Arena:
         # examine list item names for correct correlation 
     
 def build_team_one():
-    pass
+    '''Prompt the user to build team_one '''
+    print("Build Team One")
+    team_size = input("How many heroes will be in Team One? ")
+    while not done == True:
+        self.create_hero()
+        self.arena_team1.append(self.hero)
+        ask1 = input("Create another hero?" [Y or N])
+        if upper.ask == "N":
+            done == True
 
 def build_team_two():
-    pass
+    ask2 = input("Build Team Two [type an \'x\']")
+    if not ask2 == "x":
+        ask2 = input("Build Team Two [type an \'x\']")
+    else:
+        team_size = input("How many heroes will be on Team Two? ")
+        count = 0
+        if count < (team_size - 1):
+            self.create_hero()
+            self.arena_team2.append(self.hero)
+        else:
+            print("Teams are Built")
 
 
 if __name__ == "__main__":
