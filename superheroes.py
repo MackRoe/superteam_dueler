@@ -234,12 +234,12 @@ class Arena:
         added_weapon = input("What is your hero\'s weapon? ")
         print("What is the maximum damage that your hero\'s weapon")
         added_weapon_max_damage = input("is capable of inflicting? ")
-        return ability(added_weapon, added_weapon_max_damage)
+        return Ability(added_weapon, added_weapon_max_damage)
 
     def create_armor(self):
         added_armor = input("What armor does your hero use? ")
         added_armor_max_defense = input("How much damage can it deflect? ")
-        return armor(added_armor, added_armor_max_defense)
+        return Armor(added_armor, added_armor_max_defense)
 
     def create_hero(self):
         '''Prompt user for Hero information
@@ -247,41 +247,53 @@ class Arena:
         '''
         run_create_hero = True
         while run_create_hero == True:
-            # get hero name
-            name = input("What is your hero's name? ")
+            # get hero name - nombre is spanish for name
+            nombre = input("What is your hero's name? ")
            
-            while not name == "":
+            while not nombre == "":
                 ability_ask = input("Does your hero have a special ability? [Y or N] ")
-                while not ability_ask == "":
-                    if upper(ability_ask) == "Y":
-                        create_ability()
-                    elif not upper(ability_ask) == "N":
+                while not ability_ask == "X":
+                    if ability_ask.upper() == "Y":
+                        self.create_ability()
+                        ability_ask = input("Add another ability? [Y or N] ")
+                    elif ability_ask.upper() == "N":
                         print("Ok")
+                        ability_ask = "X"
                     else:
-                        name = ""
+                        nombre = ""
+                        print("User Fail; Neither Y or N entered.")
+                        ability_ask = "X"
 
-                armor_ask = input("Does your hero have armor? [Y or N]")
-                while not armor_ask == "":
-                    if upper.armor_ask== "Y":
-                        create_armor()
-                    elif not upper.armor_ask == "N":
+                armor_ask = input("Does your hero have armor? [Y or N] ")
+                while not armor_ask == "X":
+                    if armor_ask.upper() == "Y":
+                        self.create_armor()
+                        armor_ask = input("Add more armor? [Y or N]")
+                    elif armor_ask == "N":
                         print("Ok")
+                        armor_ask = "X"
+                        nombre = ""
                     else:
-                        name = ""
+                        nombre = ""
+                        armor_ask = "X"
 
-                weapon_ask = input("Does your hero have armor? [Y or N]")
-                while not weapon_ask == "":
-                    if upper.weapon_ask == "Y":
-                        create_weapon()
-                    elif upper.weapon_ask == "N":
+                weapon_ask = input("Does your hero have weapons? [Y or N]")
+                while not weapon_ask == "X":
+                    if weapon_ask.upper() == "Y":
+                        self.create_weapon()
+                        weapon_ask = input("Add another weapon? [Y or N]")
+                    elif weapon_ask.upper() == "N":
                         print("Ok")
+                        weapon_ask = "X"
                     else:
-                        name = ""
+                        weapon_ask = "X"
+
+            run_create_hero = False
         else:
             print("No Hero to Create :: Fatal Error - Program Quit")
-        # create a hero object that contains abilities, armors, and weapons
-        run_create_hero = False
-        return hero(name, ability, armor, weapon)
+            # create a hero object that contains abilities, armors, and weapons
+            run_create_hero = False
+        return Hero(nombre, Ability, Armor, Weapon)
 
         # examine list item names for correct correlation 
     
@@ -294,7 +306,7 @@ class Arena:
             self.create_hero()
             self.arena_team1.append(self.hero)
             ask1 = input("Create another hero?" [Y or N])
-            if upper.ask == "N":
+            if upper.ask1 == "N":
                 not_done == False
         return team1_size
 
