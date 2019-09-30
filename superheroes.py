@@ -287,30 +287,76 @@ class Arena:
     def build_team_one():
         '''Prompt the user to build team_one '''
         print("Build Team One")
-        team_size = input("How many heroes will be in Team One? ")
+        team1_size = input("How many heroes will be in Team One? ")
         while not done == True:
             self.create_hero()
             self.arena_team1.append(self.hero)
             ask1 = input("Create another hero?" [Y or N])
             if upper.ask == "N":
                 done == True
+        return team1_size
 
     def build_team_two():
         ask2 = input("Build Team Two [type an \'x\']")
         if not ask2 == "x":
             ask2 = input("Build Team Two [type an \'x\']")
         else:
-            team_size = input("How many heroes will be on Team Two? ")
+            team2_size = input("How many heroes will be on Team Two? ")
             count = 0
-            if count < (team_size - 1):
+            if count < (team2_size - 1):
                 self.create_hero()
                 self.arena_team2.append(self.hero)
             else:
                 print("Teams are Built")
+        return team2_size
 
     def team_battle():
         '''Battle team_one and team_two together.'''
         Team.attack()
+
+    def show_stats():
+        '''Prints team statistics to terminal.'''
+        # show winning team
+        team1_points = 0
+        for hero in self.arena_team1:
+            if hero in is_alive():
+                team1_points += 1
+        for hero in self.arena_team2:
+            if hero in is_alive():
+                team2_points += 1
+        if team1_points > team2_points:
+            print("Team One Wins")
+        else:
+            print("Team Two Wins")
+        # calculate average kills
+        for hero in arena_team1:
+            total_kills = 0
+            total_kills += self.kills
+            avg_kills = total_kills // team1_size
+            print("Team 1 avg kills: " + str(avg_kills))
+        for hero in arena_team2:
+            total_kills = 0
+            total_kills += self.kills
+            avg_kills = total_kills // team2_size
+
+        # calculate average deaths and show kill/death ratio
+        for hero in arena_team1:
+            total_deaths = 0
+            total_deaths += self.deaths
+            avg_deaths = total_deaths // team1_size
+            print("Team 1 kill/death ratio: " + str(avg_kills) + "/" + str(avg_deaths))
+        for hero in arena_team2:
+            total_deaths = 0
+            total_deaths += self.deaths
+            avg_deaths = total_deaths // team2_size
+            print("Team 2 kill/death ratio: " + str(avg_kills) + "/" + str(avg_deaths))
+
+        # show survivors
+        for hero in heroes:
+            if hero in is_alive() == True
+            print("Survivors: ")
+            print(hero)
+
 
 
 if __name__ == "__main__":
