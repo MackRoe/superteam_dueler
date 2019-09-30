@@ -284,29 +284,33 @@ class Arena:
 
         # examine list item names for correct correlation 
     
-def build_team_one():
-    '''Prompt the user to build team_one '''
-    print("Build Team One")
-    team_size = input("How many heroes will be in Team One? ")
-    while not done == True:
-        self.create_hero()
-        self.arena_team1.append(self.hero)
-        ask1 = input("Create another hero?" [Y or N])
-        if upper.ask == "N":
-            done == True
-
-def build_team_two():
-    ask2 = input("Build Team Two [type an \'x\']")
-    if not ask2 == "x":
-        ask2 = input("Build Team Two [type an \'x\']")
-    else:
-        team_size = input("How many heroes will be on Team Two? ")
-        count = 0
-        if count < (team_size - 1):
+    def build_team_one():
+        '''Prompt the user to build team_one '''
+        print("Build Team One")
+        team_size = input("How many heroes will be in Team One? ")
+        while not done == True:
             self.create_hero()
-            self.arena_team2.append(self.hero)
+            self.arena_team1.append(self.hero)
+            ask1 = input("Create another hero?" [Y or N])
+            if upper.ask == "N":
+                done == True
+
+    def build_team_two():
+        ask2 = input("Build Team Two [type an \'x\']")
+        if not ask2 == "x":
+            ask2 = input("Build Team Two [type an \'x\']")
         else:
-            print("Teams are Built")
+            team_size = input("How many heroes will be on Team Two? ")
+            count = 0
+            if count < (team_size - 1):
+                self.create_hero()
+                self.arena_team2.append(self.hero)
+            else:
+                print("Teams are Built")
+
+    def team_battle():
+        '''Battle team_one and team_two together.'''
+        Team.attack()
 
 
 if __name__ == "__main__":
