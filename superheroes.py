@@ -213,7 +213,8 @@ class Team:
 
 
 class Arena:
-    def __init__(Hero):
+    """ another class to duplicate almost everything the Team class already does """
+    def __init__(self):
         self.arena_team1 = []
         self.arena_team2 = []
         self.weapons = []
@@ -240,63 +241,64 @@ class Arena:
         added_armor_max_defense = input("How much damage can it deflect? ")
         return armor(added_armor, added_armor_max_defense)
 
-    def create_hero(self, name, abilities, armors, weapons):
+    def create_hero(self):
         '''Prompt user for Hero information
           return Hero with values from user input.
         '''
-        
-        # get hero's name
-        if len(heroes) < 2:
+        run_create_hero = True
+        while run_create_hero == True:
+            # get hero name
             name = input("What is your hero's name? ")
-            add_hero(name)
+           
             while not name == "":
-                run_create_ability = input("Does your hero have a special ability? [Y or N] ")
-                
-                while not run_create_ability == "":
-                    if upper.run_create_ability == "Y":
+                ability_ask = input("Does your hero have a special ability? [Y or N] ")
+                while not ability_ask == "":
+                    if upper(ability_ask) == "Y":
                         create_ability()
-                    elif not upper.run_create_ability == "N":
+                    elif not upper(ability_ask) == "N":
                         print("Ok")
                     else:
                         name = ""
 
-                run_create_armor = input("Does your hero have armor? [Y or N]")
-                while not run_create_armor == "":
-                    if upper.run_create_armor == "Y":
+                armor_ask = input("Does your hero have armor? [Y or N]")
+                while not armor_ask == "":
+                    if upper.armor_ask== "Y":
                         create_armor()
-                    elif not upper.run_create_armor == "N":
+                    elif not upper.armor_ask == "N":
                         print("Ok")
                     else:
                         name = ""
 
-                run_create_weapon = input("Does your hero have armor? [Y or N]")
-                while not run_create_weapon == "":
-                    if upper.run_create_weapon == "Y":
+                weapon_ask = input("Does your hero have armor? [Y or N]")
+                while not weapon_ask == "":
+                    if upper.weapon_ask == "Y":
                         create_weapon()
-                    elif not upper.run_create_weapon == "N":
+                    elif upper.weapon_ask == "N":
                         print("Ok")
                     else:
                         name = ""
         else:
-            print("Minimum Two Heroes Required :: Fatal Error - Program Quit")
+            print("No Hero to Create :: Fatal Error - Program Quit")
         # create a hero object that contains abilities, armors, and weapons
+        run_create_hero = False
         return hero(name, ability, armor, weapon)
 
         # examine list item names for correct correlation 
     
-    def build_team_one():
+    def build_team_one(self):
         '''Prompt the user to build team_one '''
         print("Build Team One")
         team1_size = input("How many heroes will be in Team One? ")
-        while not done == True:
+        not_done = True
+        while not_done == True:
             self.create_hero()
             self.arena_team1.append(self.hero)
             ask1 = input("Create another hero?" [Y or N])
             if upper.ask == "N":
-                done == True
+                not_done == False
         return team1_size
 
-    def build_team_two():
+    def build_team_two(self):
         ask2 = input("Build Team Two [type an \'x\']")
         if not ask2 == "x":
             ask2 = input("Build Team Two [type an \'x\']")
@@ -353,9 +355,9 @@ class Arena:
 
         # show survivors
         for hero in heroes:
-            if hero in is_alive() == True
-            print("Survivors: ")
-            print(hero)
+            if hero in is_alive() == True:
+                print("Survivors: ")
+                print(hero)
 
 
 
@@ -367,22 +369,22 @@ if __name__ == "__main__":
     # print("Ability Name: " + ability.name)
     # print("Ability Strength: " + str(ability.attack()))
     # ability = Ability("Smite", 25)
-    hero1 = Hero("Auntie M", 200)
-    hero2 = Hero("The Coder")
-    ability1 = Ability("Molecular Phasing", 100)
-    ability2 = Ability("Hair Flip", 5)
-    ability3 = Ability("Debugging Ability", 20)
-    ability4 = Ability("Infinite Loop", 10)
+    # hero1 = Hero("Auntie M", 200)
+    # hero2 = Hero("The Coder")
+    # ability1 = Ability("Molecular Phasing", 100)
+    # ability2 = Ability("Hair Flip", 5)
+    # ability3 = Ability("Debugging Ability", 20)
+    # ability4 = Ability("Infinite Loop", 10)
     # whip = Armor("Whip", 30)
     # hero.add_armor(whip)
     # hero.take_damage(150)
     # print("Hero Name: " + hero.name)
     # print("Current Health: ", str(hero.current_health))
     # print("Alive?: ", hero.is_alive())
-    hero1.add_ability(ability1)
-    hero1.add_ability(ability2)
-    hero2.add_ability(ability3)
-    hero2.add_ability(ability4)
+    # hero1.add_ability(ability1)
+    # hero1.add_ability(ability2)
+    # hero2.add_ability(ability3)
+    # hero2.add_ability(ability4)
     # print("All Abilities: ")
     # print(hero.abilities)
     # hero.take_damage(15000)
@@ -391,5 +393,10 @@ if __name__ == "__main__":
     # print("Current Health: ") #
     # print(hero.current_health) #
     # print(hero.is_alive())
-    hero1.fight(hero2)
+    # hero1.fight(hero2)
+    arena = Arena()
+    arena.build_team_one()
+    arena.build_team_two()
+    arena.team_battle()
+    arena.show_stats()
 
