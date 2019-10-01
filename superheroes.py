@@ -193,7 +193,7 @@ class Team:
         """ gets random hero from list of heroes """
         return random.choice(heroes)
 
-    def attack(self, hero_team1, other_team): 
+    def attack(self, other_team): 
         """ battle teams against each other """
         # select random hero
         hero_team1 = Team.random_hero(self.heroes)
