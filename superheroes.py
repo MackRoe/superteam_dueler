@@ -193,7 +193,7 @@ class Team:
         """ gets random hero from list of heroes """
         return random.choice(heroes)
 
-    def attack(self, other_team): 
+    def attack(self, hero_team1, other_team): 
         """ battle teams against each other """
         # select random hero
         hero_team1 = Team.random_hero(self.heroes)
@@ -306,16 +306,18 @@ class Arena:
         print("SUPERTEAM DUELER - HERO TEAM BUILDER")
         print("-Build Team One-")
         team1_size = input("How many heroes will be in Team One? > ")
-        not_done = True
-        while not_done == True:
-            count = 0
-            while count < (int(team1_size) - 1):
-                hero = self.create_hero()
-                self.arena_team1.append(hero)
-                ask1 = input("Create another hero? [Y or N] > ")
-                if ask1.upper() == "N":
-                    not_done == False
-                count += 1    
+        # not_done = True
+        # while not_done == True:
+        count = 0
+        while count <= (int(team1_size) - 1):
+            hero = self.create_hero()
+            self.arena_team1.append(hero)
+            ask1 = input("Create another hero? [Y or N] > ")
+            count += 1
+
+        # if ask1.upper() == "N":
+        #     not_done == False
+                    
         return team1_size
 
     def build_team_two(self):
@@ -325,19 +327,20 @@ class Arena:
         else:
             team2_size = input("How many heroes will be on Team Two? ")
             count = 0
-            if count < (team2_size - 1):
-                self.create_hero()
-                self.arena_team2.append(self.hero)
+            if count < (int(team2_size) - 1):
+                hero = self.create_hero()
+                self.arena_team2.append(hero)
                 count += 1
             else:
                 print("Teams are Built")
         return team2_size
 
-    def team_battle():
+    def team_battle(self):
         '''Battle team_one and team_two together.'''
-        Team.attack()
+        print("Battle Commenced")
+        Team.attack(self.arena_team1, self.arena_team2)
 
-    def show_stats():
+    def show_stats(self):
         '''Prints team statistics to terminal.'''
         # show winning team
         team1_points = 0
