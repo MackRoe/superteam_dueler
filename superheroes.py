@@ -103,6 +103,8 @@ class Hero:
         hero has been knocked out or not """
         
         if self.current_health <= 0:
+            if "ghost" in self.armors:
+                return False
             return False
         else:
             return True
@@ -259,23 +261,24 @@ class Arena:
             # create a hero object that contains abilities, armors, and weapons
             hero = Hero(nombre, hitpoints)
 
-                ability_ask = input("Does your hero have a special ability? [Y or N] > ")
+            ability_ask = input("Does your hero have a special ability? [Y or N] > ")
             while not ability_ask == "X":
                 if ability_ask.upper() == "Y":
                     self.create_ability()
-                ability_ask = input("Add another ability? [Y or N] > ")
-            elif ability_ask.upper() == "N":
-                print("Ok")
-                ability_ask = "X"
-            else:            
-                print("User Fail; Neither Y or N entered.")
-                ability_ask = "X"
+                    ability_ask = input("Add another ability? [Y or N] > ")
+                elif ability_ask.upper() == "N":
+                    print("Ok")
+                    ability_ask = "X"
+                else:            
+                    print("User Fail; Neither Y or N entered.")
+                    ability_ask = "X"
 
             armor_ask = input("Does your hero have armor? [Y or N] ")
             while not armor_ask == "X":
                 if armor_ask.upper() == "Y":
                     self.create_armor()
-                    armor_ask = input("Add more armor? [Y or N]")                    elif armor_ask == "N":
+                    armor_ask = input("Add more armor? [Y or N]")                    
+                elif armor_ask == "N":
                     print("Ok")
                     armor_ask = "X"
                     nombre = ""
@@ -293,9 +296,8 @@ class Arena:
                     weapon_ask = "X"
                 else:
                     weapon_ask = "X"
-            print("NEXT HERO")
-        
-        run_create_hero = False
+            
+            run_create_hero = False
             
         return hero 
     
@@ -308,10 +310,10 @@ class Arena:
         while not_done == True:
             count = 0
             while count < (int(team1_size) - 1):
-                self.create_hero()
-                self.arena_team1.append(self.hero)
+                hero = self.create_hero()
+                self.arena_team1.append(hero)
                 ask1 = input("Create another hero? [Y or N] > ")
-                if upper.ask1 == "N":
+                if ask1.upper() == "N":
                     not_done == False
                 count += 1    
         return team1_size
@@ -326,6 +328,7 @@ class Arena:
             if count < (team2_size - 1):
                 self.create_hero()
                 self.arena_team2.append(self.hero)
+                count += 1
             else:
                 print("Teams are Built")
         return team2_size
